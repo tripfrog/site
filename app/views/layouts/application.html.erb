@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wbuddy</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
+    <link href='https://fonts.googleapis.com/css?family=Oswald:700,400' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="row" id="wrapper" >
+
+    <div class="header">
+          <div class="fixbar">
+              <div class="container">
+
+                      <div class="col-xs-7">
+                        <a href=""><h1 class="pull-left " id="top">W buddy!</h1></a>
+
+<div id="menu-box">
+  <div id="toggle" class="visible-xs-block">
+  <a href="#"> <%= image_tag("menu.png", :size => "30x30", :alt => "toggle") %></a></div>
+
+<ul id="menu" >
+  <li id="n1" style=""><a href="">menu1</a></li>
+  <li id="n2"><a href="">menu2</a></li>
+</ul>
+</div><!--menu-box-->
+
+
+                      </div>
+
+                    <div class="col-xs-5">
+                    <%if user_signed_in? %>
+                        <div class="search pull-right">
+                           <form action="/" name="search2" method="post">
+                              <dl class="search2">
+                                <dt><input type="text" name="search" value="" placeholder="Search" /></dt>
+                                <dd><button><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></dd>
+                              </dl>
+                            </form>
+                        </div>
+                      <%end%>
+                    </div>
+              </div>
+          </div>
+
+            <div class="header_top">
+              <div class="container" id="head_top">
+                <div class="col-xs-12">
+                  <p class="h6"style="margin-top:10px;">仲間とトレーニングを共有しよう！</p>
+                </div>
+              </div>
+            </div>
+    </div>
+
+
+
+  <div class="container">
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<%= yield %>
+
+
+
+</div><!-- container -->
+
+
+<div class="footer" id="footer">
+
+  <small>original_serviece</small>
+
+</div>
+
+</div><!-- row --><!-- wrapper -->
+
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+<script>
+  $(function() {
+  $(window).on('scroll', function() {
+    if ($(this).scrollTop() > 30) {
+      $('.header').addClass('fixed');
+    } else {
+      $('.header').removeClass('fixed');
+    }
+  });
+});
+</script>
+
+</body>
+</html>

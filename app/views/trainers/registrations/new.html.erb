@@ -1,29 +1,81 @@
-<h2>Sign up</h2>
+<div class="col-md-1 col-xs-0"></div>
+      <div class="maincullumn col-md-7 col-xs-12" >
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <div class="main_content_top img-rounded clearfix">
+
+
+
+              <h2 class="h3" style="margin-bottom:20px"><%= image_tag("profile.jpg", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>新規登録</h2>
+             <!--  <time class="t_post_time">2016/1/19</time> -->
+
+
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-horizontal'} , html: {style: 'clear:both;'})  do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="form-group">
+  <div class="field" id="i_name" >
+<div class="label"><%= f.label :name %><br />
+          <%= f.text_field :name , placeholder: 'name'%></div>
   </div>
+</div>
 
-  <div class="field">
+<div class="form-group">
+  <div class="field" id="i_mail">
+    <%= f.label :email  %><br>
+    <%= f.email_field :email, autofocus: true , placeholder: 'Email' %>
+
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="field" id="i_pass">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <% end %><br>
+    <%= f.password_field :password, autocomplete: "off" , placeholder: 'Password' %>
 
-  <div class="field">
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="field" id="i_pass">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
+</div>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
 
-<%= render "trainers/shared/links" %>
+<%= render "devise/shared/links" %>
+</div>
+     </div><!-- maincullumn-end -->
+
+
+
+
+
+
+
+
+
+
+<div class="sidecullumn col-md-3 col-xs-12" >
+
+<div class="profile_content img-rounded">
+
+
+
+<h3 class="profile_name text-center">Help</h3>
+
+      <p class="side_text">これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。</p>
+ </div>
+
+
+
+    </div>
+ <div class="col-md-1 col-xs-0"></div>

@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   registrations: 'users/registrations'
   }
 
+resources :identifications, only: :index
 root 'top#index'
 end

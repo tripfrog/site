@@ -1,0 +1,67 @@
+
+      <div class="maincullumn col-md-8 col-xs-12" >
+
+          <div class="main_content_top img-rounded clearfix">
+
+
+
+              <h2 class="h3" style="margin-bottom:20px">
+              <%= image_tag("profile.jpg", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
+              ユーザーの投稿</h2>
+              <time class="t_post_time"><%=Date.today %></time>
+
+             <%= form_for(@post, html: {style: 'clear:both;'} ,) do |f| %>
+<div id="p_categoly">
+
+</div>
+
+<div id="p_title">
+              <%= f.text_field :title, placeholder: "タイトル"  %>
+            </div>
+       <div id="p_textarea">
+      <%= f.text_area :post, placeholder: "今日はどんなトレーニングをしましたか？" %>
+      </div>
+      <%= f.submit "投稿する" %>
+    <% end %>
+  </div>
+
+<ul>
+  <%=render partial: "top/post", collection: @posts %>
+</ul>
+ </div><!-- maincullumn-end -->
+
+
+
+
+
+
+
+
+
+
+    <div class="sidecullumn col-md-4 col-xs-12" >
+
+<div class="profile_content img-rounded">
+
+<% if user_signed_in? %>
+      <div class="profile_mar">
+      <%= image_tag("current_user.avatar", size: "130x130", class: 'img-circle' , alt: "profile") %>
+      </div>
+          <h3 class="profile_name text-center"><%=current_user.name %></h3>
+             <p class="side_text">これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。</p>
+
+<%elsif trainer_signed_in? %>
+
+<div class="profile_mar">
+ <%= image_tag("current_trainer.avatar", size: "130x130", class: 'img-circle' , alt: "profile") %>
+ </div>
+<h3 class="profile_name text-center"><%=current_trainer.name %></h3>
+ <p class="side_text">これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。</p>
+<%end%>
+ </div>
+
+
+        <div class="side_content img-rounded">
+        <p>これはサイドカラムです。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはサイドカラムです。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはサイドカラムです。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはサイドカラムです。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはサイドカラムです。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。</p>
+        </div>
+    </div>

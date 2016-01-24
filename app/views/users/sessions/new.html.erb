@@ -1,14 +1,24 @@
-<h2>Log in</h2>
+<div class="col-md-1 col-xs-0"></div>
+      <div class="maincullumn col-md-7 col-xs-12" >
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+          <div class="main_content_top img-rounded clearfix">
+
+  <h2 class="h3" style="margin-bottom:20px"><%= image_tag("profile.jpg", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>ユーザーログイン</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'} , html: {style: 'clear:both;'}) do |f| %>
+
+<div class="form-group">
+  <div class="field" id="i_mail">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
+</div>
 
-  <div class="field">
+<div class="form-group">
+  <div class="field" id="i_pass">
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "off" %>
+  </div>
   </div>
 
   <% if devise_mapping.rememberable? -%>
@@ -24,3 +34,31 @@
 <% end %>
 
 <%= render "users/shared/links" %>
+  </div>
+ </div><!-- maincullumn-end -->
+
+
+
+
+
+
+
+
+
+
+<div class="sidecullumn col-md-3 col-xs-12" >
+
+<div class="profile_content img-rounded">
+
+
+
+<h3 class="profile_name text-center">Help</h3>
+
+      <p class="side_text">これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。</p>
+ </div>
+
+
+
+    </div>
+ <div class="col-md-1 col-xs-0"></div>
+

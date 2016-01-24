@@ -1,4 +1,5 @@
 class Users::UnlocksController < Devise::UnlocksController
+  skip_before_action :identification_page
   # GET /resource/unlock/new
   # def new
   #   super

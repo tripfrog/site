@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   }
 
 resources :identifications, only: :index
+resources :top, only: :index
+resources :posts, only: :create
 root 'top#index'
 end

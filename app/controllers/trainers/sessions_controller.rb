@@ -1,4 +1,5 @@
 class Trainers::SessionsController < Devise::SessionsController
+    skip_before_action :identification_page
 # before_filter :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

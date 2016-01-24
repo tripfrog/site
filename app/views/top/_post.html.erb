@@ -1,11 +1,25 @@
   <li class="main_content  img-rounded">
       <a href="">
           <div class="main_c_left">
-          <%= image_tag("profile.jpg", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
+          <%if post.trainer_id%>
+          <%= image_tag("post.trainer.avatar", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
+          <%elsif post.user_id%>
+          <%= image_tag("post.user.avatar", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
+          <%end%>
           </div>
 
-              <div class="main_c_right"><time class="t_line_time">2016/1/19</time><h5 class="t_line_name"></h5>
-                  <h4 class="t_title">トレーニングタイトル</h4>
+              <div class="main_c_right"><time class="t_line_time"><%=time_ago_in_words post.updated_at%></time>
+
+               <h5 class="t_line_name">
+<%if post.trainer_id%>
+<%=post.trainer.name%>
+<%elsif post.user_id%>
+<%=post.user.name%>
+<%end%>
+               </h5>
+
+
+                  <h4 class="t_title"><%=post.title%></h4>
                  <%= image_tag("photo.jpg", class: 't_photo' , alt: "img") %>
                   <p><%=post.post%></p>
               </div>

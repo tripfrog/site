@@ -20,7 +20,7 @@
                       <div class="col-xs-7">
                         <a href=""><h1 class="pull-left " id="top">W buddy!</h1></a>
 
-<%if user_signed_in? || trainer_signed_in? %>
+<%if user_signed_in?%>
 <div id="menu-box">
   <div id="toggle" class="visible-xs-block">
   <a href="#"> <%= image_tag("menu.png", :size => "30x30", :alt => "toggle") %></a></div>
@@ -28,7 +28,18 @@
 
 <ul id="menu" >
   <li id="n1"><%= link_to "Sign out ", destroy_user_session_path, :method => :delete %></li>
-  <li id="n2"><%= link_to "My page ",''%></li>
+  <li id="n2"><%= link_to "My page ", user_path(current_user.id)%></li>
+</ul>
+</div><!--menu-box-->
+<%elsif trainer_signed_in?%>
+<div id="menu-box">
+  <div id="toggle" class="visible-xs-block">
+  <a href="#"> <%= image_tag("menu.png", :size => "30x30", :alt => "toggle") %></a></div>
+
+
+<ul id="menu" >
+  <li id="n1"><%= link_to "Sign out ", destroy_user_session_path, :method => :delete %></li>
+  <li id="n2"><%= link_to "My page ", trainer_path(current_trainer.id)%></li>
 </ul>
 </div><!--menu-box-->
 <%end%>

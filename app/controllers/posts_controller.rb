@@ -12,9 +12,14 @@ end
 
 
 private
-def post_params
-  params.require(:post).permit(:post, :title)
-end
 
+def post_params
+  if user_signed_in?
+  params.require(:post).permit(:post, :title).merge(user_id: current_user.id)
+
+elsif trainer_signed_in?
+   params.require(:post).permit(:post, :title).merge(trainer_id: current_trainer.id,)
+end
+end
 
 end

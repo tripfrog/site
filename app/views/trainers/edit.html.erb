@@ -1,0 +1,41 @@
+<div class="col-md-2 col-xs-0"></div>
+      <div class="maincullumn col-md-8 col-xs-12" >
+
+          <div class="main_content_top img-rounded clearfix">
+
+  <h2 class="h3" style="margin-bottom:20px"><%= image_tag("profile.jpg", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>編集画面</h2>
+
+<%= form_for current_trainer,html: {style: 'clear:both;'}  do |f| %>
+
+<div class="form-group file" id="i_avatar">
+        <%= f.file_field :avatar, class: "form-control floating-label", placeholder: "画像アップロード" %>
+      </div>
+
+        <div class="form-group">
+            <div class="field" id="i_name" >
+                <div class="label"><%= f.label :name %><br />
+                <%= f.text_field :name , placeholder: 'name'%>
+                </div>
+            </div>
+        </div>
+
+         <div id="p_textarea">
+      <%= f.text_area :profile, placeholder: "あなたのプロフィーるを記入してください", maxlength: "200" %>
+      </div>
+
+
+     <div class="actions">
+        <%= f.submit "送信", class: "" %>
+      </div>
+    <% end %>
+
+
+
+
+  </div>
+ </div><!-- maincullumn-end -->
+
+
+
+ <div class="col-md-2 col-xs-0"></div>
+

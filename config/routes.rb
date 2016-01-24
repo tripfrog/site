@@ -14,5 +14,7 @@ Rails.application.routes.draw do
 resources :identifications, only: :index
 resources :top, only: :index
 resources :posts, only: :create
+resources :users, only: [:show, :edit, :update]
+resources :trainers, only: [:show, :edit, :update]
 root 'top#index'
 end

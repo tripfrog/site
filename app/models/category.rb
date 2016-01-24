@@ -1,4 +1,3 @@
 class Category < ActiveRecord::Base
-  belongs_to :post
-  belongs_to :answer
+  belongs_to :categoable, polymorphic: true
 end

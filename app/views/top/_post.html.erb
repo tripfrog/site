@@ -2,9 +2,9 @@
       <a href="">
           <div class="main_c_left">
           <%if post.trainer_id%>
-          <%= image_tag("post.trainer.avatar", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
+          <%= image_tag("#{post.trainer.avatar}", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
           <%elsif post.user_id%>
-          <%= image_tag("post.user.avatar", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
+          <%= image_tag("#{post.user.avatar}", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
           <%end%>
           </div>
 
@@ -20,8 +20,30 @@
 
 
                   <h4 class="t_title"><%=post.title%></h4>
-                 <%= image_tag("photo.jpg", class: 't_photo' , alt: "img") %>
+                  <%if post.avatar.present?%>
+                 <%= image_tag("#{post.avatar}", class: 't_photo' , alt: "img") %>
+                 <%else%>
+                 <%end%>
                   <p><%=post.post%></p>
               </div>
+
+
       </a>
+
+      <div class="answer">
+<span>コメント<%= post.answers.count%></span>
+ <%= form_tag(new_answer_path, method: :get, class: "") do %>
+      <%= hidden_field_tag(:post_id, post.id) %>
+      <%= submit_tag("回答する") %>
+    <% end %>
+
+<p>
+<%if post.answers.count >= 1 %>
+<p><%= @answer.answer%></p>
+<%else%>
+<%end%>
+  </p>
+
+</div>
+
     </li>

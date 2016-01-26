@@ -1,0 +1,18 @@
+<div class="col-md-2 col-xs-0"></div>
+    <div class="maincullumn col-md-8 col-xs-12" >
+       <div class="main_content_top img-rounded clearfix">
+
+        <%= form_for(@answer) do |f| %>
+          <h3><%= @post.post %></h3>
+
+            <div id="p_textarea">
+            <%= f.text_area :answer, placeholder: "コメントを入力してください", maxlength: "200"  %>
+             </div>
+
+          <%= f.hidden_field :post_id %>
+          <%= f.submit "回答する"%>
+        <% end %>
+
+      </div>
+  </div>
+<div class="col-md-2 col-xs-0"></div>

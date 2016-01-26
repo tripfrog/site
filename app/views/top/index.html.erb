@@ -17,9 +17,11 @@
               <time class="t_post_time"><%=Date.today %></time>
 
              <%= form_for(@post, html: {style: 'clear:both;'} ,) do |f| %>
-<div id="p_categoly">
+<div class="form-group file" id="i_avatar">
 
-</div>
+        <%= f.file_field :avatar, class: "floating-label", placeholder: "画像アップロード" %>
+
+      </div>
 
 <div id="p_title">
               <%= f.text_field :title, placeholder: "タイトル"  %>

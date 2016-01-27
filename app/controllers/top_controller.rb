@@ -10,7 +10,15 @@ class TopController < ApplicationController
         @answer = Answer.new
         @answers = Answer.all
         # @categoly = Category.new
+
+
+
     end
+
+    def search
+          @posts = Post.where('title LIKE(?)', "%#{params[:search]}%").limit(20)
+    end
+
 
 
 

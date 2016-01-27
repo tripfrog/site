@@ -50,12 +50,18 @@
                     <div class="col-xs-5">
                     <%if user_signed_in?  || trainer_signed_in? %>
                         <div class="search pull-right">
-                           <form action="/" name="search2" method="post">
+
+             <%= form_tag('/top/search', method: :get) do %>
+                        <form action="/" name="search2" method="post">
                               <dl class="search2">
                                 <dt><input type="text" name="search" value="" placeholder="Search" /></dt>
                                 <dd><button><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></dd>
                               </dl>
                             </form>
+
+              <% end %>
+
+
                         </div>
                       <%end%>
                     </div>

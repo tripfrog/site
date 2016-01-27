@@ -12,10 +12,15 @@ Rails.application.routes.draw do
   }
 
 resources :identifications, only: :index
-resources :top, only: :index
-resources :posts, only: :create
-resources :answers, only: [:new,:create]
+resources :top, only: :index do
+  collection do
+  get 'search'
+end
+end
 resources :users, only: [:show, :edit, :update]
 resources :trainers, only: [:show, :edit, :update]
+resources :posts, only: :create
+resources :answers, only: [:new,:create]
+
 root 'top#index'
 end

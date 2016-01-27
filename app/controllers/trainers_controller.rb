@@ -12,6 +12,7 @@ class TrainersController < ApplicationController
      current_trainer.update(update_params)
   end
 
+
   private
     def update_params
       params.require(:trainer).permit(:name, :profile, :avatar)

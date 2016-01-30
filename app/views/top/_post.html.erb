@@ -1,6 +1,6 @@
   <li class="main_content  img-rounded">
       <%if post.user_id%>
-     <a href="">
+<%=link_to (user_path(post.user.id)) do%>
             <div class="main_c_left">
             <%= image_tag("#{post.user.avatar}", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
             </div>
@@ -16,9 +16,10 @@
                 <%end%>
                 <p><%=post.post%></p>
           </div>
-     </a>
+    <%end%>
 <%elsif post.trainer_id%>
-      <a href="">
+    <%= link_to (trainer_path(post.trainer.id)) do%>
+
             <div class="main_c_left">
             <%= image_tag("#{post.trainer.avatar}", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
             </div>
@@ -34,7 +35,7 @@
                 <%end%>
                 <p><%=post.post%></p>
           </div>
-     </a>
+     <%end%>
 
 
 <%end%>

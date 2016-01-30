@@ -1,33 +1,40 @@
 
       <div class="maincullumn col-md-8 col-xs-12" >
 
-          <div class="main_content_top img-rounded clearfix">
+<%if trainer_signed_in?%>
+
+<div class="main_content_top img-rounded clearfix">
+    <%if @trainer.id == current_trainer.id%>
+                  <h2 class="h3" style="margin-bottom:20px">
+                  <%=image_tag("#{@trainer.avatar}", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
+                  あなたの投稿</h2>
 
 
+                  <time class="t_post_time"><%=Date.today %></time>
 
-              <h2 class="h3" style="margin-bottom:20px">
-              <%=image_tag("#{current_trainer.avatar}", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
-              あなたの投稿</h2>
+        <%= form_for(@post, html: {style: 'clear:both;'} ,) do |f| %>
+            <div id="p_title">
+            <%= f.text_field :title, placeholder: "タイトル"  %>
+            </div>
+            <div id="p_textarea">
+            <%= f.text_area :post, placeholder: "今日はどんなトレーニングをしましたか？", maxlength: "200" %>
+            </div>
+            <%= f.submit "投稿する" %>
+        <% end %>
+    <%elsif%>
+    <p><%= @trainer.name%>さんの投稿一覧</p>
+    <%end%>
+</div>
+<%elsif user_signed_in?%>
 
 
-              <time class="t_post_time"><%=Date.today %></time>
-
-             <%= form_for(@post, html: {style: 'clear:both;'} ,) do |f| %>
-<div id="p_categoly">
-
+<div class="main_content_top img-rounded clearfix">
+    <p><%= @trainer.name%>さんの投稿一覧</p>
 </div>
 
-<div id="p_title">
-              <%= f.text_field :title, placeholder: "タイトル"  %>
-            </div>
-       <div id="p_textarea">
-      <%= f.text_area :post, placeholder: "今日はどんなトレーニングをしましたか？", maxlength: "200" %>
-      </div>
-      <%= f.submit "投稿する" %>
-    <% end %>
-  </div>
+<%end%>
 
-<ul>
+<ul style="margin-top:25px">
   <%=render partial: "top/post", collection: @posts %>
 </ul>
  </div><!-- maincullumn-end -->
@@ -47,16 +54,17 @@
 
 
       <div class="profile_mar">
-      <%= image_tag("#{current_trainer.avatar}", size: "130x130", class: 'img-circle' , alt: "profile") %>
+      <%= image_tag("#{@trainer.avatar}", size: "130x130", class: 'img-circle' , alt: "profile") %>
       </div>
-          <h3 class="profile_name text-center"><%=current_trainer.name %></h3>
-                <%= current_trainer.place.city %><br>
-                      <%= current_trainer.category.category %>
-             <p class="side_text"><%=current_trainer.profile%></p>
-
+          <h3 class="profile_name text-center"><%=@trainer.name %></h3>
+                <%= @trainer.place.city %><br>
+                      <%= @trainer.category.category %>
+             <p class="side_text"><%=@trainer.profile%></p>
+             <%if trainer_signed_in?%>
+             <%if @trainer.id == current_trainer.id%>
              <%= link_to "プロフィール編集", edit_trainer_path(current_trainer) %>
-
-
+            <%end%>
+            <%end%>
 
  </div>
 

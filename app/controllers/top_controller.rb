@@ -14,6 +14,7 @@ class TopController < ApplicationController
         @categories = Category.all
         # @categoly = Category.new
         @relationship =Relationship.new
+        
     end
 
 

@@ -50,5 +50,6 @@ gem 'devise'
 gem 'paperclip'
 gem 'kaminari'
 gem 'therubyracer'
+gem 'rails_12factor'
 
 

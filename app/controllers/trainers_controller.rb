@@ -1,8 +1,8 @@
 class TrainersController < ApplicationController
   def show
     @trainer = Trainer.find(params[:id])
-     @post = Post.new
-        @posts = Post.order("created_at DESC")
+    @post = Post.new
+    @posts = Post.where(trainer_id: params[:id]).order("created_at DESC")
   end
 
   def edit

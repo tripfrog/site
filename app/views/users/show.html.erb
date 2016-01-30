@@ -1,37 +1,44 @@
 
       <div class="maincullumn col-md-8 col-xs-12" >
 
-          <div class="main_content_top img-rounded clearfix">
+<%if user_signed_in?%>
+
+<div class="main_content_top img-rounded clearfix">
+    <%if @user.id == current_user.id%>
+                  <h2 class="h3" style="margin-bottom:20px">
+                  <%=image_tag("#{@user.avatar}", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
+                  あなたの投稿</h2>
 
 
+                  <time class="t_post_time"><%=Date.today %></time>
 
-              <h2 class="h3" style="margin-bottom:20px">
-              <%=image_tag("#{current_user.avatar}", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
-              あなたの投稿</h2>
+        <%= form_for(@post, html: {style: 'clear:both;'} ,) do |f| %>
+            <div id="p_title">
+            <%= f.text_field :title, placeholder: "タイトル"  %>
+            </div>
+            <div id="p_textarea">
+            <%= f.text_area :post, placeholder: "今日はどんなトレーニングをしましたか？", maxlength: "200" %>
+            </div>
+            <%= f.submit "投稿する" %>
+        <% end %>
+   <%elsif%>
 
+    <p><%= @user.name%>さんの投稿一覧</p>
 
-              <time class="t_post_time"><%=Date.today %></time>
-
-             <%= form_for(@post, html: {style: 'clear:both;'} ,) do |f| %>
-<div id="p_categoly">
-
+    <%end%>
 </div>
 
-<div id="p_title">
-              <%= f.text_field :title, placeholder: "タイトル"  %>
-            </div>
-       <div id="p_textarea">
-      <%= f.text_area :post, placeholder: "今日はどんなトレーニングをしましたか？", maxlength: "200" %>
-      </div>
-      <%= f.submit "投稿する" %>
-    <% end %>
-  </div>
+ <%elsif trainer_signed_in?%>
 
-<ul>
+<div class="main_content_top img-rounded clearfix">
+    <p><%= @user.name%>さんの投稿一覧</p>
+</div>
+<%end%>
+
+<ul style="margin-top:25px">
   <%=render partial: "top/post", collection: @posts %>
 </ul>
  </div><!-- maincullumn-end -->
-
 
 
 
@@ -47,14 +54,19 @@
 
 
       <div class="profile_mar">
-      <%= image_tag("#{current_user.avatar}", size: "130x130", class: 'img-circle' , alt: "profile") %>
+      <%= image_tag("#{@user.avatar}", size: "130x130", class: 'img-circle' , alt: "profile") %>
       </div>
-          <h3 class="profile_name text-center"><%=current_user.name %></h3>
-          <%= current_user.place.city %><br>
-          <%= current_user.category.category %>
-             <p class="side_text"><%=current_user.profile%></p>
+          <h3 class="profile_name text-center"><%=@user.name %></h3>
+          <%= @user.place.city %><br>
+          <%= @user.category.category %>
+             <p class="side_text"><%=@user.profile%></p>
 
+ <%if user_signed_in?%>
+             <%if @user.id == current_user.id%>
              <%= link_to "プロフィール編集", edit_user_path(current_user) %>
+            <%end%>
+            <%end%>
+
 
 
 

@@ -1,4 +1,4 @@
-class AddAddressToTrainers < ActiveRecord::Migration
+class AddTrainerPlaceyToTrainers < ActiveRecord::Migration
   def change
     add_column :trainers, :place_id, :integer
   end

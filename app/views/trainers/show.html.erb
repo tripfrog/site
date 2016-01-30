@@ -6,7 +6,7 @@
 
 
               <h2 class="h3" style="margin-bottom:20px">
-              <%=image_tag("current_trainer.avatar", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
+              <%=image_tag("#{current_trainer.avatar}", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
               あなたの投稿</h2>
 
 
@@ -47,9 +47,11 @@
 
 
       <div class="profile_mar">
-      <%= image_tag("current_trainer.avatar.url(:medium)", size: "130x130", class: 'img-circle' , alt: "profile") %>
+      <%= image_tag("#{current_trainer.avatar}", size: "130x130", class: 'img-circle' , alt: "profile") %>
       </div>
           <h3 class="profile_name text-center"><%=current_trainer.name %></h3>
+                <%= current_trainer.place.city %><br>
+                      <%= current_trainer.category.category %>
              <p class="side_text"><%=current_trainer.profile%></p>
 
              <%= link_to "プロフィール編集", edit_trainer_path(current_trainer) %>

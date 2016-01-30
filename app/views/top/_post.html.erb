@@ -1,37 +1,65 @@
   <li class="main_content  img-rounded">
-      <a href="">
-          <div class="main_c_left">
-          <%if post.trainer_id%>
-          <%= image_tag("#{post.trainer.avatar}", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
-          <%elsif post.user_id%>
-          <%= image_tag("#{post.user.avatar}", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
-          <%end%>
+      <%if post.user_id%>
+     <a href="">
+            <div class="main_c_left">
+            <%= image_tag("#{post.user.avatar}", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
+            </div>
+
+           <div class="main_c_right"><time class="t_line_time"><%=time_ago_in_words post.updated_at%></time>
+                <h5 class="t_line_name">
+                <%=post.user.name%>
+                </h5>
+                <h4 class="t_title"><%=post.title%></h4>
+                <%if post.avatar.present?%>
+                <%= image_tag("#{post.avatar}", class: 't_photo' , alt: "img") %>
+                <%else%>
+                <%end%>
+                <p><%=post.post%></p>
           </div>
+     </a>
+<%elsif post.trainer_id%>
+      <a href="">
+            <div class="main_c_left">
+            <%= image_tag("#{post.trainer.avatar}", size: "50x50", class: 'img-circle' , style: 'margin-right:10px;', alt: "profile") %>
+            </div>
 
-              <div class="main_c_right"><time class="t_line_time"><%=time_ago_in_words post.updated_at%></time>
+           <div class="main_c_right"><time class="t_line_time"><%=time_ago_in_words post.updated_at%></time>
+                <h5 class="t_line_name">
+                <%=post.trainer.name%>
+                </h5>
+                <h4 class="t_title"><%=post.title%></h4>
+                <%if post.avatar.present?%>
+                <%= image_tag("#{post.avatar}", class: 't_photo' , alt: "img") %>
+                <%else%>
+                <%end%>
+                <p><%=post.post%></p>
+          </div>
+     </a>
 
-               <h5 class="t_line_name">
-<%if post.trainer_id%>
-<%=post.trainer.name%>
-<%elsif post.user_id%>
-<%=post.user.name%>
+
 <%end%>
-               </h5>
-
-
-                  <h4 class="t_title"><%=post.title%></h4>
-                  <%if post.avatar.present?%>
-                 <%= image_tag("#{post.avatar}", class: 't_photo' , alt: "img") %>
-                 <%else%>
-                 <%end%>
-                  <p><%=post.post%></p>
-              </div>
-
-
-      </a>
 
       <div class="answer_buttons">
-<!-- <span>コメント<%= post.answers.count%></span> -->
+<%if user_signed_in? %>
+    <%if post.trainer_id %>
+    <%=link_to 'フォロー', "/relationships/#{post.trainer.id}/?type=#{post.trainer.class}", method: :post %>
+    <%elsif post.user_id %>
+    <%unless post.user_id == current_user.id %>
+    <%=link_to 'フォロー', "/relationships/#{post.user.id}/?type=#{post.user.class}", method: :post %>
+    <%end%>
+    <%end%>
+<%elsif trainer_signed_in? %>
+    <%if post.trainer_id %>
+    <%unless post.trainer_id == current_trainer.id %>
+    <%=link_to 'フォロー', "/relationships/#{post.trainer.id}/?type=#{post.trainer.class}", method: :post %>
+    <%end%>
+    <%elsif post.user_id %>
+    <%=link_to 'フォロー', "/relationships/#{post.user.id}/?type=#{post.user.class}", method: :post %>
+    <%end%>
+
+<%end%>
+
+
  <%= form_tag(new_answer_path, method: :get, class: "") do %>
       <%= hidden_field_tag(:post_id, post.id) %>
       <%= submit_tag("回答する") %>

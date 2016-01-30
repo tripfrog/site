@@ -76,6 +76,8 @@
                       <%= image_tag("#{current_user.avatar}", size: "130x130", class: 'img-circle' , alt: "profile") %>
                       </div>
                       <h3 class="profile_name text-center"><%=current_user.name %></h3>
+                      <%= current_user.place.city %><br>
+                      <%= current_user.category.category %>
                       <p class="side_text"><%=current_user.profile %></p>
                   <%end%>
 
@@ -87,6 +89,8 @@
                     <%= image_tag("#{current_trainer.avatar}", size: "130x130", class: 'img-circle' , alt: "profile") %>
                     </div>
                     <h3 class="profile_name text-center"><%=current_trainer.name %></h3>
+                     <%= current_trainer.place.city %><br>
+                      <%= current_trainer.category.category %>
                     <p class="side_text"><%=current_trainer.profile %></p>
                   <%end%>
             <%end%>
@@ -95,6 +99,19 @@
 
 
         <div class="side_content img-rounded">
-            <p>これはサイドカラムです。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはサイドカラムです。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはサイドカラムです。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはサイドカラムです。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはサイドカラムです。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。ご注意ください。これはダミープロフィールです。</p>
+             <div class="search pull-right">
+
+             <%= form_tag('/top/trainer_search', method: :get) do %>
+                        <form action="/" name="search2" method="post">
+                              <dl class="search2">
+                                <dt><input type="text" name="t_search" value="" placeholder="トレーナー検索" /></dt>
+                                <dd><button><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></dd>
+                              </dl>
+                            </form>
+
+              <% end %>
+
+
+                        </div>
         </div>
     </div>

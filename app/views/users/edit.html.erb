@@ -14,6 +14,18 @@
 
       </div>
 
+<div class="form-group">
+
+ <%= f.collection_select :place_id, Place.all, :id,:city %>
+
+ </div>
+
+ <div class="form-group">
+
+ <%= f.collection_select :category_id, Category.all, :id,:category %>
+
+ </div>
+
         <div class="form-group">
             <div class="field" id="i_name" >
                 <div class="label"><%= f.label :name %><br />

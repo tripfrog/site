@@ -15,12 +15,16 @@ resources :identifications, only: :index
 resources :top, only: :index do
   collection do
   get 'search'
+  get 'trainer_search'
 end
+
 end
 resources :users, only: [:show, :edit, :update]
 resources :trainers, only: [:show, :edit, :update]
 resources :posts, only: :create
 resources :answers, only: [:new,:create]
+ post  'relationships/:id'      =>  'relationships#create'
+ # :idでモデルの持つid情報を取得
 
 root 'top#index'
 end

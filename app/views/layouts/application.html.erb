@@ -18,12 +18,14 @@
               <div class="container">
 
                       <div class="col-xs-7">
-                        <a href=""><h1 class="pull-left " id="top">W buddy!</h1></a>
+                          <%= link_to "/" do%><h1 class="pull-left " id="top">W buddy!</h1>
+                          <%end%>
 
 <%if user_signed_in?%>
 <div id="menu-box">
   <div id="toggle" class="visible-xs-block">
-  <a href="#"> <%= image_tag("menu.png", :size => "30x30", :alt => "toggle") %></a></div>
+
+   <%= image_tag("menu.png", :size => "30x30", :alt => "toggle") %></div>
 
 
 <ul id="menu" >

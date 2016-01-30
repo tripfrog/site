@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160125120001) do
+ActiveRecord::Schema.define(version: 20160129134155) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "post_id",    limit: 4
@@ -23,13 +23,15 @@ ActiveRecord::Schema.define(version: 20160125120001) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.integer  "categoable_id",   limit: 4
-    t.string   "categoable_type", limit: 255
-    t.string   "category",        limit: 255
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.string   "trainer_id",      limit: 255
-    t.string   "user_id",         limit: 255
+    t.string   "category",   limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string   "city",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -45,6 +47,15 @@ ActiveRecord::Schema.define(version: 20160125120001) do
     t.integer  "avatar_file_size",    limit: 4
     t.datetime "avatar_updated_at"
     t.integer  "answer_id",           limit: 4
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "following_id",   limit: 4
+    t.string   "following_type", limit: 255
+    t.integer  "follower_id",    limit: 4
+    t.string   "follower_type",  limit: 255
   end
 
   create_table "trainers", force: :cascade do |t|
@@ -67,7 +78,8 @@ ActiveRecord::Schema.define(version: 20160125120001) do
     t.integer  "avatar_file_size",       limit: 4
     t.datetime "avatar_updated_at"
     t.text     "profile",                limit: 65535
-    t.string   "status",                 limit: 255
+    t.integer  "category_id",            limit: 4
+    t.integer  "place_id",               limit: 4
   end
 
   add_index "trainers", ["email"], name: "index_trainers_on_email", unique: true, using: :btree
@@ -93,7 +105,8 @@ ActiveRecord::Schema.define(version: 20160125120001) do
     t.string   "address",                limit: 255
     t.string   "name",                   limit: 255
     t.text     "profile",                limit: 65535
-    t.string   "status",                 limit: 255
+    t.integer  "place_id",               limit: 4
+    t.integer  "category_id",            limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

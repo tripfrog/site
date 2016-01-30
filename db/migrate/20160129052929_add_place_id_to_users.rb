@@ -1,4 +1,4 @@
-class AddAddressToUsers < ActiveRecord::Migration
+class AddPlaceIdToUsers < ActiveRecord::Migration
   def change
     add_column :users, :place_id, :integer
   end

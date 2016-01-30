@@ -7,15 +7,9 @@
 
 <ul class="">
 
-      <% @posts.each do |post| %>
+      <% @trainers.each do |trainer| %>
       <li>
-       <p><%=post.title%></p>
-       <p><%=post.post%></p>
-      <%if post.trainer_id%>
-      <%=post.trainer.name%>
-      <%elsif post.user_id%>
-      <%=post.user.name%>
-      <%end%>
+       <p><%=trainer.name%></p>
       </li>
       <% end %>
 </ul>

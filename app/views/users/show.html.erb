@@ -50,6 +50,8 @@
       <%= image_tag("#{current_user.avatar}", size: "130x130", class: 'img-circle' , alt: "profile") %>
       </div>
           <h3 class="profile_name text-center"><%=current_user.name %></h3>
+          <%= current_user.place.city %><br>
+          <%= current_user.category.category %>
              <p class="side_text"><%=current_user.profile%></p>
 
              <%= link_to "プロフィール編集", edit_user_path(current_user) %>

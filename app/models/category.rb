@@ -1,3 +1,4 @@
 class Category < ActiveRecord::Base
-  belongs_to :categoable, polymorphic: true
+   has_many :users
+   has_many :trainers
 end

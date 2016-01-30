@@ -6,8 +6,11 @@ class Trainer < ActiveRecord::Base
 
          has_many :posts
          has_many :answers
-         has_many :categories
-         has_one :category, as: :categoable
+         belongs_to :place
+         belongs_to :category
+         has_many :relationships, dependent: :destroy
+         has_many :relationships, as: :follower, dependent: :destroy
+
 
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>"}
   validates_attachment_content_type :avatar, content_type: ["image/jpg","image/jpeg","image/png"]
